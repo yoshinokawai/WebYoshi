@@ -72,110 +72,106 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 <!-- Right Side: Login Form -->
 <div class="flex flex-1 flex-col justify-center items-center px-6 py-12 lg:px-24 w-full bg-background-light dark:bg-background-dark relative">
-    <!-- Back link -->
-    <div class="absolute top-6 left-6 lg:top-10 lg:left-10">
-        <a class="group flex items-center gap-2 text-slate-500 hover:text-primary transition-colors text-sm font-medium"
-           href="<?php echo esc_url( home_url('/') ); ?>">
-            <span class="material-symbols-outlined text-lg group-hover:-translate-x-1 transition-transform">arrow_back</span>
-            Back to Wiki
-        </a>
-    </div>
-
-    <div class="w-full max-w-[420px] flex flex-col">
-        <!-- Header -->
-        <div class="mb-8">
-            <div class="mb-6 h-12 w-12 flex items-center justify-center rounded-xl bg-primary text-white shadow-primary/30 shadow-lg">
-                <span class="material-symbols-outlined">lock_open</span>
-            </div>
-            <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-2 tracking-tight">Login to VTuber Wiki</h2>
-            <p class="text-slate-500 dark:text-slate-400">Welcome back! Please enter your details.</p>
+    
+    <div class="w-full max-w-[480px] flex flex-col">
+        <!-- Back link -->
+        <div class="mb-8 self-start">
+            <a class="group flex items-center gap-2 text-slate-500 hover:text-primary transition-colors text-sm font-medium"
+               href="<?php echo esc_url( home_url('/') ); ?>">
+                <span class="material-symbols-outlined text-lg group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                Back to Wiki
+            </a>
         </div>
 
-        <!-- WP Login Form -->
-        <?php
-        $login_args = [
-            'redirect'       => home_url('/'),
-            'label_log_in'   => 'Log In',
-            'form_id'        => 'vtwiki-login-form',
-            'id_username'    => 'username',
-            'id_password'    => 'password',
-            'id_submit'      => 'login-submit',
-            'remember'       => true,
-        ];
-        // For custom styled form, we output manually:
-        ?>
-        <form class="flex flex-col gap-5" method="post" action="<?php echo esc_url( site_url( 'wp-login.php', 'login_post' ) ); ?>">
-            <input type="hidden" name="redirect_to" value="<?php echo esc_attr( home_url('/') ); ?>">
-            <!-- Username -->
-            <div class="space-y-1.5">
-                <label class="block text-sm font-semibold text-slate-700 dark:text-slate-200" for="user_login">Username or Email</label>
-                <div class="relative group">
-                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                        <span class="material-symbols-outlined text-slate-400 group-focus-within:text-primary transition-colors">person</span>
-                    </div>
-                    <input class="block w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-surface-dark pl-11 pr-4 py-3 text-slate-900 dark:text-white placeholder-slate-400 focus:border-primary focus:ring-2 focus:ring-primary/20 shadow-sm transition-all text-base outline-none"
-                           id="user_login" name="log" placeholder="HololiveFan123" type="text" autocomplete="username">
+        <!-- Premium Login Card -->
+        <div class="w-full bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-800 rounded-3xl p-8 md:p-12 shadow-2xl shadow-primary/5">
+            <!-- Header -->
+            <div class="mb-10 text-center sm:text-left">
+                <div class="mb-6 h-14 w-14 flex items-center justify-center rounded-2xl bg-primary text-white shadow-primary/30 shadow-lg mx-auto sm:mx-0">
+                    <span class="material-symbols-outlined text-3xl">lock</span>
                 </div>
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-2 tracking-tight">Login to VTuber Wiki</h2>
+                <p class="text-slate-500 dark:text-slate-400">Welcome back! Please enter your details.</p>
             </div>
-            <!-- Password -->
-            <div class="space-y-1.5">
-                <label class="block text-sm font-semibold text-slate-700 dark:text-slate-200" for="user_pass">Password</label>
-                <div class="relative group">
-                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                        <span class="material-symbols-outlined text-slate-400 group-focus-within:text-primary transition-colors">key</span>
-                    </div>
-                    <input class="block w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-surface-dark pl-11 pr-12 py-3 text-slate-900 dark:text-white placeholder-slate-400 focus:border-primary focus:ring-2 focus:ring-primary/20 shadow-sm transition-all text-base outline-none"
-                           id="user_pass" name="pwd" placeholder="••••••••" type="password" autocomplete="current-password">
-                    <div class="absolute inset-y-0 right-0 pr-4 flex items-center cursor-pointer text-slate-400 hover:text-slate-600 transition-colors"
-                         onclick="this.previousElementSibling==null;var i=this.previousElementSibling||document.getElementById('user_pass');i.type=i.type==='password'?'text':'password';this.querySelector('span').textContent=i.type==='password'?'visibility_off':'visibility'">
-                        <span class="material-symbols-outlined text-[20px]">visibility_off</span>
+
+            <!-- WP Login Form -->
+            <form class="flex flex-col gap-6" method="post" action="<?php echo esc_url( site_url( 'wp-login.php', 'login_post' ) ); ?>">
+                <input type="hidden" name="redirect_to" value="<?php echo esc_attr( home_url('/') ); ?>">
+                
+                <!-- Username -->
+                <div class="space-y-2">
+                    <label class="block text-sm font-semibold text-slate-700 dark:text-slate-200" for="user_login">Username or Email</label>
+                    <div class="relative group">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                            <span class="material-symbols-outlined text-slate-400 group-focus-within:text-primary transition-colors">person</span>
+                        </div>
+                        <input class="block w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 pl-11 pr-4 py-3.5 text-slate-900 dark:text-white placeholder-slate-400 focus:border-primary focus:ring-2 focus:ring-primary/20 shadow-sm transition-all text-base outline-none"
+                               id="user_login" name="log" placeholder="HololiveFan123" type="text" autocomplete="username">
                     </div>
                 </div>
-            </div>
-            <!-- Options Row -->
-            <div class="flex items-center justify-between mt-1">
-                <label class="flex items-center gap-2 cursor-pointer group">
-                    <input class="h-4 w-4 rounded border-slate-300 text-primary focus:ring-primary/30 transition-all" type="checkbox" name="rememberme" value="forever">
-                    <span class="text-sm font-medium text-slate-600 dark:text-slate-400 group-hover:text-slate-800 transition-colors">Remember me</span>
-                </label>
-                <a class="text-sm font-bold text-primary hover:text-primary-dark transition-colors"
-                   href="<?php echo esc_url( wp_lostpassword_url() ); ?>">Forgot password?</a>
-            </div>
-            <!-- Submit -->
-            <?php wp_nonce_field( 'ajax-login-nonce', 'security' ); ?>
-            <button class="mt-2 w-full flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white font-bold py-3.5 px-4 rounded-xl shadow-lg shadow-primary/25 hover:shadow-primary/40 active:scale-[0.98] transition-all duration-200" type="submit" name="wp-submit">
-                <span>Log In</span>
-                <span class="material-symbols-outlined text-sm">login</span>
-            </button>
-        </form>
 
-        <!-- Divider -->
-        <div class="relative my-8">
-            <div class="absolute inset-0 flex items-center">
-                <div class="w-full border-t border-slate-200 dark:border-slate-700"></div>
-            </div>
-            <div class="relative flex justify-center text-sm">
-                <span class="bg-background-light dark:bg-background-dark px-3 text-slate-500">Or continue with</span>
-            </div>
-        </div>
+                <!-- Password -->
+                <div class="space-y-2">
+                    <label class="block text-sm font-semibold text-slate-700 dark:text-slate-200" for="user_pass">Password</label>
+                    <div class="relative group">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                            <span class="material-symbols-outlined text-slate-400 group-focus-within:text-primary transition-colors">key</span>
+                        </div>
+                        <input class="block w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 pl-11 pr-12 py-3.5 text-slate-900 dark:text-white placeholder-slate-400 focus:border-primary focus:ring-2 focus:ring-primary/20 shadow-sm transition-all text-base outline-none"
+                               id="user_pass" name="pwd" placeholder="••••••••" type="password" autocomplete="current-password">
+                        <div class="absolute inset-y-0 right-0 pr-4 flex items-center cursor-pointer text-slate-400 hover:text-slate-600 transition-colors"
+                             onclick="var i=document.getElementById('user_pass');i.type=i.type==='password'?'text':'password';this.querySelector('span').textContent=i.type==='password'?'visibility_off':'visibility'">
+                            <span class="material-symbols-outlined text-[20px]">visibility_off</span>
+                        </div>
+                    </div>
+                </div>
 
-        <!-- Social Buttons (decorative) -->
-        <div class="grid grid-cols-2 gap-3 mb-8">
-            <button class="flex items-center justify-center gap-2 rounded-xl bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-700 py-2.5 px-4 text-slate-700 dark:text-slate-200 font-medium hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
-                <img alt="Google" class="h-5 w-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqo64h8cIiojcKChsXeY_2T6FOfgItzi0w3MTXAhyRmNimymdCSsYaEURuBcbogcJEGINLDG-uK1A7MpJOjY1K9yj_kTnx7Dh4ajpyYxsoGvL4YYEA7Mb6BKZ6G9k0MKpBG_Hs43VjtsZTJHvRpnfUjA5nVujRBK0I0QLs5FqVucRxxOaQxRTwIm56BHaJrA1EXAugOeVgN8Ki3-gcrqJj866JRob_5EWz8UjLMJbusnZHLIvDA5uB1IEuI_esVh0jBFgN5PHhoo0">
-                <span>Google</span>
-            </button>
-            <button class="flex items-center justify-center gap-2 rounded-xl bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-700 py-2.5 px-4 text-slate-700 dark:text-slate-200 font-medium hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
-                <img alt="Discord" class="h-5 w-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgfUtIm1sn3RLNuQpbpzfBp05R4M2kaqm-vnqoL4EixN-8g_42HuL9J3sgNIwEhagOHIedRIOHpZCMuHE3jLOyQfd2uOAIklvjg1qB6qWaJM4HhTz0mNFlk3P6IfyEDRyFC3vpFVC-vdCfyMHSYZVfpWEU6BpuqMjXr-SZ5MAoJQZguNM0FX-MOcWAGuULU3wffyiJjhT1Le-3ktVjgpwQ92vFqQp7_TomrDqngpOR0-5D_bObUHslVNhg4A6ahONGOSlUzw7X0L0">
-                <span>Discord</span>
-            </button>
+                <!-- Options Row -->
+                <div class="flex flex-wrap items-center justify-between gap-x-4 gap-y-3 mt-1">
+                    <label class="flex items-center gap-2 cursor-pointer group">
+                        <input class="h-4 w-4 rounded border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-primary focus:ring-primary/30 transition-all cursor-pointer" type="checkbox" name="rememberme" value="forever">
+                        <span class="text-sm font-medium text-slate-600 dark:text-slate-400 group-hover:text-slate-800 dark:group-hover:text-slate-200 transition-colors">Remember me</span>
+                    </label>
+                    <a class="text-sm font-bold text-primary hover:text-primary-dark transition-colors"
+                       href="<?php echo esc_url( wp_lostpassword_url() ); ?>">Forgot password?</a>
+                </div>
+
+                <!-- Submit -->
+                <?php wp_nonce_field( 'ajax-login-nonce', 'security' ); ?>
+                <button class="mt-4 w-full flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white font-bold py-4 px-4 rounded-xl shadow-lg shadow-primary/25 hover:shadow-primary/40 active:scale-[0.98] transition-all duration-200" type="submit" name="wp-submit">
+                    <span>Log In</span>
+                    <span class="material-symbols-outlined text-xl">login</span>
+                </button>
+            </form>
+
+            <!-- Divider -->
+            <div class="relative my-10">
+                <div class="absolute inset-0 flex items-center">
+                    <div class="w-full border-t border-slate-100 dark:border-slate-800"></div>
+                </div>
+                <div class="relative flex justify-center text-xs uppercase tracking-widest font-bold">
+                    <span class="bg-white dark:bg-surface-dark px-4 text-slate-400">Or continue with</span>
+                </div>
+            </div>
+
+            <!-- Social Buttons -->
+            <div class="grid grid-cols-2 gap-4">
+                <button class="flex items-center justify-center gap-2.5 rounded-xl bg-slate-50 dark:bg-surface-dark/50 border border-slate-100 dark:border-slate-800 py-3 px-4 text-slate-700 dark:text-slate-200 font-bold hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
+                    <img alt="Google" class="h-5 w-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqo64h8cIiojcKChsXeY_2T6FOfgItzi0w3MTXAhyRmNimymdCSsYaEURuBcbogcJEGINLDG-uK1A7MpJOjY1K9yj_kTnx7Dh4ajpyYxsoGvL4YYEA7Mb6BKZ6G9k0MKpBG_Hs43VjtsZTJHvRpnfUjA5nVujRBK0I0QLs5FqVucRxxOaQxRTwIm56BHaJrA1EXAugOeVgN8Ki3-gcrqJj866JRob_5EWz8UjLMJbusnZHLIvDA5uB1IEuI_esVh0jBFgN5PHhoo0">
+                    <span class="text-sm">Google</span>
+                </button>
+                <button class="flex items-center justify-center gap-2.5 rounded-xl bg-slate-50 dark:bg-surface-dark/50 border border-slate-100 dark:border-slate-800 py-3 px-4 text-slate-700 dark:text-slate-200 font-bold hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
+                    <img alt="Discord" class="h-5 w-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgfUtIm1sn3RLNuQpbpzfBp05R4M2kaqm-vnqoL4EixN-8g_42HuL9J3sgNIwEhagOHIedRIOHpZCMuHE3jLOyQfd2uOAIklvjg1qB6qWaJM4HhTz0mNFlk3P6IfyEDRyFC3vpFVC-vdCfyMHSYZVfpWEU6BpuqMjXr-SZ5MAoJQZguNM0FX-MOcWAGuULU3wffyiJjhT1Le-3ktVjgpwQ92vFqQp7_TomrDqngpOR0-5D_bObUHslVNhg4A6ahONGOSlUzw7X0L0">
+                    <span class="text-sm">Discord</span>
+                </button>
+            </div>
         </div>
 
         <!-- Sign-up Footer -->
-        <div class="text-center">
-            <p class="text-slate-600 dark:text-slate-400 text-sm">
+        <div class="mt-8 text-center">
+            <p class="text-slate-600 dark:text-slate-400 tracking-tight">
                 Don't have an account?
-                <a class="font-bold text-primary hover:text-primary-dark transition-colors ml-1 inline-flex items-center gap-0.5"
+                <a class="font-bold text-primary hover:text-primary-dark transition-colors ml-1 inline-flex items-center gap-1.5"
                    href="<?php echo vtwiki_page_url('register'); ?>">
                     Create an account
                     <span class="material-symbols-outlined text-sm font-bold">arrow_forward</span>

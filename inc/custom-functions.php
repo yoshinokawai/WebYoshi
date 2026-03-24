@@ -62,3 +62,17 @@ function vtwiki_active_page(): string {
     if ( is_front_page() )        return 'home';
     return '';
 }
+
+/**
+ * Helper function to reliably retrieve page URLs by slug.
+ *
+ * @param string $slug The page slug.
+ * @return string The permalink or '#' if not found.
+ */
+function vtwiki_page_url($slug) {
+    if (!$slug) return '#';
+    if ($slug === 'home') return home_url('/');
+    
+    $page = get_page_by_path($slug);
+    return $page ? get_permalink($page->ID) : home_url('/?page=' . $slug); // Fallback to query param if not yet published or slug mismatch
+}

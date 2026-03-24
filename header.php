@@ -6,11 +6,6 @@
  * Contains: <head>, Google Fonts/Tailwind CDN, Premium Navigation bar.
  */
 
-// Helper: get page URL by slug, fallback to #
-function vtwiki_page_url( $slug ) {
-    $page = get_page_by_path( $slug );
-    return $page ? esc_url( get_permalink( $page ) ) : '#';
-}
 $active = vtwiki_active_page();
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?> class="scroll-smooth">
